@@ -3,13 +3,14 @@ import 'package:resume_page/constants.dart';
 
 class IndividualProject extends StatelessWidget {
   final String projectName,projectDescription,projectLink;
+  int delayDuration;
 
-  IndividualProject({this.projectName,this.projectDescription,this.projectLink});
+  IndividualProject({this.projectName,this.projectDescription,this.projectLink,this.delayDuration});
 
   @override
   Widget build(BuildContext context) {
     return TweenAnimationBuilder(
-      duration: Duration(seconds: 1),
+      duration: Duration(milliseconds:delayDuration),
       tween: Tween<double>(begin: 500,end: 0),
       builder: (BuildContext context,double size,Widget child){
         return Transform.translate(

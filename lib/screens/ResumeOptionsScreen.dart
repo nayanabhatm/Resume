@@ -95,10 +95,15 @@ class ResumeOptionsScreen extends StatelessWidget{
                     builder: (BuildContext context, double size,Widget child){
                       return Transform.translate(
                         offset: Offset(size,size),
-                        child: CircleAvatar(
-                          backgroundColor: Colors.white,
-                          radius: 110.0,
-                          backgroundImage: AssetImage('/images/profilepic.PNG'),
+                        child: GestureDetector(
+                          onTap: (){
+                            Navigator.pushNamed(context, '/ProfileDetailsScreen');
+                          },
+                          child: CircleAvatar(
+                            backgroundColor: Colors.white,
+                            radius: 110.0,
+                            backgroundImage: AssetImage('/images/profilepic.PNG'),
+                          ),
                         ) ,
                       );
                     },

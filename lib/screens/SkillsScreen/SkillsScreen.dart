@@ -11,7 +11,7 @@ class SkillsScreen extends StatelessWidget{
           child: Column(
             children: [
               SizedBox(height: 20.0,),
-              Text("SKILLS",style: kHeadText1,),
+              Text("Skills",style: kHeadText1,),
               SizedBox(height: 20.0,),
               DataTable(
                 columns : [
@@ -28,7 +28,7 @@ class SkillsScreen extends StatelessWidget{
                   buildSkillDataRow("Hadoop",0.5),
                   DataRow(cells: [
                     DataCell(Text("Other Technologies Worked on",style: kHeadText5,)),
-                    DataCell(Text("Google Storage,Google BigQuery,Firebase,AWS",style: kHeadText5,))]
+                    DataCell(Text("Google Storage,Google BigQuery,Firebase,AWS, Git",style: kHeadText5,))]
                   ),
                   DataRow(cells: [
                     DataCell(Text("Debugging Tools Used",style: kHeadText5,)),

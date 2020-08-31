@@ -4,6 +4,7 @@ import 'package:resume_page/screens/EducationScreen/EducationScreen.dart';
 import 'package:resume_page/screens/ExperienceScreen/ExperienceScreen.dart';
 import 'package:resume_page/screens/HelloScreen.dart';
 import 'package:resume_page/screens/HobbiesScreen/HobbiesScreen.dart';
+import 'package:resume_page/screens/ProfileDetailsScreen/ProfileDetailsScreen.dart';
 import 'package:resume_page/screens/ProjectsScreen/ProjectsScreen.dart';
 import 'package:resume_page/screens/ResumeOptionsScreen.dart';
 import 'package:resume_page/screens/SkillsScreen/SkillsScreen.dart';
@@ -21,7 +22,7 @@ class ResumeApp extends StatelessWidget {
       title: 'Resume',
       theme: ThemeData.dark().copyWith(
         iconTheme: IconThemeData(
-          color: Colors.tealAccent,
+          color: Colors.amberAccent,
         ),
         scaffoldBackgroundColor: Color(0xff22264A),
         textTheme: Theme.of(context).textTheme.apply(
@@ -37,7 +38,8 @@ class ResumeApp extends StatelessWidget {
         "/SkillsScreen" : (context) => SkillsScreen(),
         "/HobbiesScreen" : (context) => HobbiesScreen(),
         "/AwardsCertifications" : (context) => AwardsCertifications(),
-        "/ProjectsScreen" : (context) => ProjectsScreen()
+        "/ProjectsScreen" : (context) => ProjectsScreen(),
+        "/ProfileDetailsScreen": (context) => ProfileDetailsScreen()
       },
     );
   }
