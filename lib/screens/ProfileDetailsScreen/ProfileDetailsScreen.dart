@@ -1,26 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:resume_page/constants.dart';
+import 'package:resume_page/Constants/sizeConfig.dart';
+import 'file:///D:/Flutter_Apps/resume_page/lib/Constants/constants.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfileDetailsScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     // TODO: implement build
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(height: 20.0,),
+          SizedBox(height: SizeConfig.safeBlockVertical * 2.66 ,),
           Text("About",style: kHeadText1,),
           Text("Nayana Bhat M",style: kNameStyle,),
-          SizedBox(height: 10.0,),
+          SizedBox(height: SizeConfig.safeBlockVertical + 2.5 ,),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
               children:[
-                Icon(Icons.account_circle,size: 50.0,),
-                SizedBox(width:5.0,),
-                Text("Software Engineer who is passionate in building projects that can solve real world problems using relevant technologies. ",style: kHeadText5,),
+                Icon(Icons.account_circle,size: SizeConfig.safeBlockHorizontal * 2.9,),
+                SizedBox(width:SizeConfig.safeBlockVertical - 2.5,),
+                Flexible(child: Text("Software Engineer who is passionate in building projects that can solve real world problems using relevant technologies. ",style: kHeadText5,)),
               ]
           ),
-          SizedBox(height: 20.0,),
+          SizedBox(height: SizeConfig.safeBlockVertical * 2.66 ,),
           IndividualInformation(iconName: Icons.email,details:"nayana.bhat.m@gmail.com",delayDuration: 300,),
           IndividualInformation(iconName: Icons.place,details:"Bangalore, Karnataka",delayDuration: 500,),
           IndividualInformationImageIcon(imagePath:'/images/github.png',details:"https://github.com/nayanabhatm/",delayDuration: 700,),
@@ -48,12 +51,20 @@ class IndividualInformationImageIcon extends StatelessWidget {
               return Transform.translate(
                   offset: Offset(-size,0),
                   child: SizedBox(
-                    width: 600.0,
+                    width: SizeConfig.safeBlockHorizontal * 39.0 ,
                     child: Card(
                       color: Colors.lightBlueAccent.shade400,
+                      shadowColor: Colors.white,
+                      elevation: SizeConfig.safeBlockVertical + 2.5 ,
                       child: ListTile(
-                        leading: ImageIcon(AssetImage(imagePath),size: 40.0,),
-                        title: Text(details,style: kHeadText5,),
+                        leading: ImageIcon(AssetImage(imagePath),size: SizeConfig.safeBlockHorizontal * 2.6 ,),
+                        title: InkWell(
+                            onTap: () async{
+                              if(await canLaunch(details)){
+                                await launch(details);                             }
+                            },
+                            child: Text(details,style: kHeadText5,)
+                        ),
                       ),
                     ),
                   ),
@@ -71,24 +82,28 @@ class IndividualInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TweenAnimationBuilder(
-        duration: Duration(milliseconds:delayDuration),
-        tween: Tween<double>(begin: 500,end: 0),
-        builder: (BuildContext context,double size,Widget child){
-          return Transform.translate(
-            offset: Offset(-size,0),
-            child: SizedBox(
-              width: 600.0,
-              child: Card(
-                color: Colors.lightBlueAccent.shade400,
-                child: ListTile(
-                  leading: Icon(iconName,size: 40.0,),
-                  title: Text(details,style: kHeadText5,),
+    return SingleChildScrollView(
+      child: TweenAnimationBuilder(
+          duration: Duration(milliseconds:delayDuration),
+          tween: Tween<double>(begin: 500,end: 0),
+          builder: (BuildContext context,double size,Widget child){
+            return Transform.translate(
+              offset: Offset(-size,0),
+              child: SizedBox(
+                width: SizeConfig.safeBlockHorizontal * 39.0 ,
+                child: Card(
+                  shadowColor: Colors.white,
+                  elevation: SizeConfig.safeBlockVertical + 2.5 ,
+                  color: Colors.lightBlueAccent.shade400,
+                  child: ListTile(
+                    leading: Icon(iconName,size: SizeConfig.safeBlockHorizontal * 2.6 ,),
+                    title: Text(details,style: kHeadText5,),
+                  ),
                 ),
               ),
-            ),
-          );
-        }
+            );
+          }
+      ),
     );
   }
 }

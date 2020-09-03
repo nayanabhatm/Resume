@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:resume_page/Constants/sizeConfig.dart';
 
 class HelloThere extends StatefulWidget {
   @override
@@ -17,18 +18,11 @@ class _HelloThereState extends State<HelloThere> with SingleTickerProviderStateM
     // TODO: implement initState
     super.initState();
     animationController=AnimationController(vsync: this, duration: Duration(seconds: 3));
-    textColorAnimation=ColorTween(begin: Colors.limeAccent,end:Colors.white).animate(animationController);
-    handColorAnimation=ColorTween(begin: Colors.black,end:Colors.white).animate(animationController);
+    textColorAnimation=ColorTween(begin: Colors.blueAccent,end:Colors.white).animate(animationController);
 
     animationController.forward();
     animationController.addListener(() {
         setState(() { });
-    });
-    animationController.addStatusListener((status) {
-      if(status==AnimationStatus.completed)
-        animationController.reverse();
-      else if(status==AnimationStatus.dismissed)
-        animationController.forward();
     });
 
     startTime();
@@ -36,7 +30,7 @@ class _HelloThereState extends State<HelloThere> with SingleTickerProviderStateM
   }
 
   startTime() async {
-    await Future.delayed(Duration(seconds:2,milliseconds: 300),(){
+    await Future.delayed(Duration(seconds:2,milliseconds: 500),(){
         Navigator.pushNamed(context, '/ResumeOptions');
       }
     );
@@ -45,7 +39,6 @@ class _HelloThereState extends State<HelloThere> with SingleTickerProviderStateM
   @override
   void dispose() {
     // TODO: implement dispose
-    animationController.removeStatusListener((status) { });
     animationController.removeListener(() { });
     animationController.dispose();
     super.dispose();
@@ -53,6 +46,8 @@ class _HelloThereState extends State<HelloThere> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
+
     return Scaffold(
       body: Center(
         child: TyperAnimatedTextKit(
@@ -60,7 +55,7 @@ class _HelloThereState extends State<HelloThere> with SingleTickerProviderStateM
             textStyle: TextStyle(
               color: textColorAnimation.value,
               fontFamily: 'Kaushan Script',
-              fontSize: 150.0,
+              fontSize: SizeConfig.safeBlockHorizontal * 10,
               fontWeight: FontWeight.bold,
             ),
             textAlign: TextAlign.start,
