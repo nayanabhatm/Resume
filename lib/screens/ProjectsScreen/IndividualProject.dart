@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resume_page/Constants/sizeConfig.dart';
-import 'file:///D:/Flutter_Apps/resume_page/lib/Constants/constants.dart';
+import 'package:resume_page/Constants/textStyles.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class IndividualProject extends StatelessWidget {
@@ -28,6 +28,7 @@ class IndividualProject extends StatelessWidget {
                   leading: Text(projectName,style: kHeadText2,),
                   title: Text(projectDescription,style: kHeadText4,),
                   subtitle: InkWell(
+                    hoverColor: Colors.lightBlueAccent,
                       onTap: () async{
                         if(await canLaunch(projectLink)){
                           launch(projectLink);

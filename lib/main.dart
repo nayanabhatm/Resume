@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:resume_page/Constants/sizeConfig.dart';
 import 'package:resume_page/screens/AwardsAndCertifications/AwardsCertifications.dart';
 import 'package:resume_page/screens/EducationScreen/EducationScreen.dart';
 import 'package:resume_page/screens/ExperienceScreen/ExperienceScreen.dart';
@@ -9,7 +8,6 @@ import 'package:resume_page/screens/ProfileDetailsScreen/ProfileDetailsScreen.da
 import 'package:resume_page/screens/ProjectsScreen/ProjectsScreen.dart';
 import 'package:resume_page/screens/ResumeOptions/ResumeOptionsScreen.dart';
 import 'package:resume_page/screens/SkillsScreen/SkillsScreen.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(ResumeApp());

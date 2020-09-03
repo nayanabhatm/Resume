@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resume_page/Constants/sizeConfig.dart';
-import 'file:///D:/Flutter_Apps/resume_page/lib/Constants/constants.dart';
+import 'package:resume_page/Constants/textStyles.dart';
 
 class ExperienceIndividualTasks extends StatelessWidget {
   final String individualTasks;

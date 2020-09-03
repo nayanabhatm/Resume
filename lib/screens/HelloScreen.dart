@@ -48,18 +48,21 @@ class _HelloThereState extends State<HelloThere> with SingleTickerProviderStateM
   Widget build(BuildContext context) {
     SizeConfig().init(context);
 
-    return Scaffold(
-      body: Center(
-        child: TyperAnimatedTextKit(
-            text: ["Hello There...", "I am Nayana"],
-            textStyle: TextStyle(
-              color: textColorAnimation.value,
-              fontFamily: 'Kaushan Script',
-              fontSize: SizeConfig.safeBlockHorizontal * 10,
-              fontWeight: FontWeight.bold,
-            ),
-            textAlign: TextAlign.start,
-            alignment: AlignmentDirectional.topStart
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        body: Center(
+          child: TyperAnimatedTextKit(
+              text: ["Hello There...", "I am Nayana"],
+              textStyle: TextStyle(
+                color: textColorAnimation.value,
+                fontFamily: 'Kaushan Script',
+                fontSize: SizeConfig.safeBlockHorizontal * 10,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.start,
+              alignment: AlignmentDirectional.topStart
+          ),
         ),
       ),
     );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resume_page/Constants/sizeConfig.dart';
-import 'file:///D:/Flutter_Apps/resume_page/lib/Constants/constants.dart';
+import 'package:resume_page/Constants/textStyles.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ProfileDetailsScreen extends StatelessWidget{
@@ -8,29 +8,32 @@ class ProfileDetailsScreen extends StatelessWidget{
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     // TODO: implement build
-    return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(height: SizeConfig.safeBlockVertical * 2.66 ,),
-          Text("About",style: kHeadText1,),
-          Text("Nayana Bhat M",style: kNameStyle,),
-          SizedBox(height: SizeConfig.safeBlockVertical + 2.5 ,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-              children:[
-                Icon(Icons.account_circle,size: SizeConfig.safeBlockHorizontal * 2.9,),
-                SizedBox(width:SizeConfig.safeBlockVertical - 2.5,),
-                Flexible(child: Text("Software Engineer who is passionate in building projects that can solve real world problems using relevant technologies. ",style: kHeadText5,)),
-              ]
-          ),
-          SizedBox(height: SizeConfig.safeBlockVertical * 2.66 ,),
-          IndividualInformation(iconName: Icons.email,details:"nayana.bhat.m@gmail.com",delayDuration: 300,),
-          IndividualInformation(iconName: Icons.place,details:"Bangalore, Karnataka",delayDuration: 500,),
-          IndividualInformationImageIcon(imagePath:'/images/github.png',details:"https://github.com/nayanabhatm/",delayDuration: 700,),
-          IndividualInformationImageIcon(imagePath:'/images/linkedin.png',details:"https://www.linkedin.com/in/nayana-bhat-m/",delayDuration: 900,),
-          IndividualInformationImageIcon(imagePath:'/images/quality.png',details:"Creative, Energetic, Hardworking, Honest, Persistent, Motivated, Organised, Reliable, Team Player, Innovative, Committed",delayDuration: 1100,),
-    ]
-    )
+    return WillPopScope(
+      onWillPop: () async => true,
+      child: Scaffold(
+        body: Column(
+          children: [
+            SizedBox(height: SizeConfig.safeBlockVertical * 2.66 ,),
+            Text("About",style: kHeadText1,),
+            Text("Nayana Bhat M",style: kNameStyle,),
+            SizedBox(height: SizeConfig.safeBlockVertical + 2.5 ,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+                children:[
+                  Icon(Icons.account_circle,size: SizeConfig.safeBlockHorizontal * 2.9,),
+                  SizedBox(width:SizeConfig.safeBlockVertical - 2.5,),
+                  Flexible(child: Text("Software Engineer who is passionate in building projects that can solve real world problems using relevant technologies. ",style: kHeadText5,)),
+                ]
+            ),
+            SizedBox(height: SizeConfig.safeBlockVertical * 2.66 ,),
+            IndividualInformation(iconName: Icons.email,details:"nayana.bhat.m@gmail.com",delayDuration: 300,),
+            IndividualInformation(iconName: Icons.place,details:"Bangalore, Karnataka",delayDuration: 500,),
+            IndividualInformationImageIcon(imagePath:'/images/github.png',details:"https://github.com/nayanabhatm/",delayDuration: 700,),
+            IndividualInformationImageIcon(imagePath:'/images/linkedin.png',details:"https://www.linkedin.com/in/nayana-bhat-m/",delayDuration: 900,),
+            IndividualInformationImageIcon(imagePath:'/images/quality.png',details:"Creative, Energetic, Hardworking, Honest, Persistent, Motivated, Organised, Reliable, Team Player, Innovative, Committed",delayDuration: 1100,),
+      ]
+      )
+      ),
     );
   }
 

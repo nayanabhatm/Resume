@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resume_page/Constants/sizeConfig.dart';
-import 'file:///D:/Flutter_Apps/resume_page/lib/Constants/constants.dart';
+import 'package:resume_page/Constants/textStyles.dart';
 
 class SkillsScreen extends StatelessWidget{
 
@@ -8,41 +8,44 @@ class SkillsScreen extends StatelessWidget{
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     // TODO: implement build
-    return Scaffold(
-        body: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(height: SizeConfig.safeBlockVertical * 2.66,),
-                Text("Skills",style: kHeadText1,),
-                SizedBox(height: SizeConfig.safeBlockVertical * 2.66,),
-                DataTable(
-                  columns : [
-                    DataColumn(label: Text("Skills",style: kHeadText2,)),
-                    DataColumn(label: Text("Fluency",style: kHeadText2,)),
-                  ],
-                  rows: [
-                    buildSkillDataRow("Flutter",0.5),
-                    buildSkillDataRow("Java",0.5),
-                    buildSkillDataRow("Python",0.5),
-                    buildSkillDataRow("SQL",0.4),
-                    buildSkillDataRow("Informatica Cloud Data Integration",0.8),
-                    buildSkillDataRow("Inforamtica Cloud Application Integration",0.7),
-                    buildSkillDataRow("Hadoop and Hive",0.5),
-                    DataRow(cells: [
-                      DataCell(Text("Other Technologies Worked on",style: kHeadText5,)),
-                      DataCell(Text("Google Storage,Google BigQuery,Firebase,AWS, Git",style: kHeadText5,))]
-                    ),
-                    DataRow(cells: [
-                      DataCell(Text("Debugging Tools Used",style: kHeadText5,)),
-                      DataCell(Text("SOAP UI,Postman,Fiddler,Sumo Logic,Wireshark",style: kHeadText5,)),
-                    ]),
-                  ],
-                ),
-              ],
+    return WillPopScope(
+      onWillPop: () async => true,
+      child: Scaffold(
+          body: Center(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(height: SizeConfig.safeBlockVertical * 2.66,),
+                  Text("Skills",style: kHeadText1,),
+                  SizedBox(height: SizeConfig.safeBlockVertical * 2.66,),
+                  DataTable(
+                    columns : [
+                      DataColumn(label: Text("Skills",style: kHeadText2,)),
+                      DataColumn(label: Text("Fluency",style: kHeadText2,)),
+                    ],
+                    rows: [
+                      buildSkillDataRow("Flutter",0.5),
+                      buildSkillDataRow("Java",0.5),
+                      buildSkillDataRow("Python",0.5),
+                      buildSkillDataRow("SQL",0.4),
+                      buildSkillDataRow("Informatica Cloud Data Integration",0.8),
+                      buildSkillDataRow("Inforamtica Cloud Application Integration",0.7),
+                      buildSkillDataRow("Hadoop and Hive",0.5),
+                      DataRow(cells: [
+                        DataCell(Text("Other Technologies Worked on",style: kHeadText5,)),
+                        DataCell(Text("Google Storage,Google BigQuery,Firebase,AWS, Git",style: kHeadText5,))]
+                      ),
+                      DataRow(cells: [
+                        DataCell(Text("Debugging Tools Used",style: kHeadText5,)),
+                        DataCell(Text("SOAP UI,Postman,Fiddler,Sumo Logic,Wireshark",style: kHeadText5,)),
+                      ]),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-        )
+          )
+      ),
     );
   }
 
