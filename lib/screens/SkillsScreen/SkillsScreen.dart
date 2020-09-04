@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:resume_page/Constants/sizeConfig.dart';
 import 'package:resume_page/Constants/textStyles.dart';
 
 class SkillsScreen extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     // TODO: implement build
     return WillPopScope(
       onWillPop: () async => true,
@@ -15,9 +13,9 @@ class SkillsScreen extends StatelessWidget{
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(height: SizeConfig.safeBlockVertical * 2.66,),
+                  SizedBox(height: 20,),
                   Text("Skills",style: kHeadText1,),
-                  SizedBox(height: SizeConfig.safeBlockVertical * 2.66,),
+                  SizedBox(height: 20,),
                   DataTable(
                     columns : [
                       DataColumn(label: Text("Skills",style: kHeadText2,)),
@@ -57,8 +55,8 @@ class SkillsScreen extends StatelessWidget{
                      ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: Container(
-                          height: SizeConfig.safeBlockVertical * 4,
-                          width: SizeConfig.safeBlockHorizontal * 13.02,
+                          height: 30,
+                          width: 200,
                           child: TweenAnimationBuilder(
                             tween: Tween<double>(begin: 0,end:skillPercentage),
                             duration: Duration(seconds: 1),

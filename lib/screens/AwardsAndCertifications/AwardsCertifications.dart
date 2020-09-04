@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:resume_page/Constants/sizeConfig.dart';
 import 'package:resume_page/Constants/textStyles.dart';
 import 'package:resume_page/screens/AwardsAndCertifications/IndividualAwards.dart';
 
 class AwardsCertifications extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return WillPopScope(
       onWillPop: () async => true,
       child: Scaffold(
@@ -16,7 +14,7 @@ class AwardsCertifications extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text("Awards And Certifications",style: kHeadText1,),
-                SizedBox(height: SizeConfig.safeBlockVertical + 2.5,),
+                SizedBox(height: 10,),
                 TweenAnimationBuilder(
                     duration: Duration(milliseconds:400),
                     tween: Tween<double>(begin: 500,end: 0),
@@ -24,11 +22,11 @@ class AwardsCertifications extends StatelessWidget {
                       return Transform.translate(
                           offset: Offset(-size,0),
                           child:Container(
-                            width: SizeConfig.safeBlockHorizontal * 39,
+                            width: 600,
                             child: Card(
                               shadowColor: Colors.white,
                               color: Colors.white,
-                              elevation: SizeConfig.safeBlockVertical + 2.5,
+                              elevation: 6.0,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
@@ -38,11 +36,9 @@ class AwardsCertifications extends StatelessWidget {
                                         " Awards",
                                         style: kHeadText2,)
                                   ),
-                                  IndividualAwards('2018 Champion award at Informatica'),
-                                  IndividualAwards('Received many appreciations from different clients'),
-                                  IndividualAwards('Contributed to few articles at Informatica that would help the clients'),
-                                  IndividualAwards('Topped in 6th semester exams in my engineering college'),
-                                  IndividualAwards('Won Few Programming contests during College days'),
+                                  IndividualAwards('Customer Champion award in 2018 and other appreciations from different clients at Informatica'),
+                                  IndividualAwards('Have Contributed to few articles at Informatica to help clients'),
+                                  IndividualAwards('Participated in Hackathons and have won Few Programming contests'),
                                   IndividualAwards('Won several Badminton and Yoga Competitions'),
                                 ],
                               ),
@@ -51,7 +47,7 @@ class AwardsCertifications extends StatelessWidget {
                       );
                     }
                 ),
-                SizedBox(height: SizeConfig.safeBlockVertical + 2.5,),
+                SizedBox(height: 10,),
                 TweenAnimationBuilder(
                     duration: Duration(milliseconds:400),
                     tween: Tween<double>(begin: 500,end: 0),
@@ -59,11 +55,11 @@ class AwardsCertifications extends StatelessWidget {
                       return Transform.translate(
                           offset: Offset(-size,0),
                           child:Container(
-                            width: SizeConfig.safeBlockHorizontal * 39,
+                            width: 600,
                             child: Card(
                               shadowColor: Colors.white,
                               color: Colors.white,
-                              elevation: SizeConfig.safeBlockVertical + 2.5,
+                              elevation: 6.0,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
@@ -77,7 +73,6 @@ class AwardsCertifications extends StatelessWidget {
                                   IndividualAwards('\"Cloud Computing Fundamentals, From IBM\"'),
                                   IndividualAwards('\"AWS Fundamentals\", From Coursera'),
                                   IndividualAwards('\"AWS Online Conference Completion\", From AWS '),
-                                  IndividualAwards('\"Networks Workshop\" by Cisco'),
                                 ],
                               ),
                             ),

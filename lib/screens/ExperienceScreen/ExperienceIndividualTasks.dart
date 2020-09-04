@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:resume_page/Constants/sizeConfig.dart';
 import 'package:resume_page/Constants/textStyles.dart';
 
 class ExperienceIndividualTasks extends StatelessWidget {
@@ -8,14 +7,18 @@ class ExperienceIndividualTasks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
-    return ListTile(
-      leading: Icon(
-        Icons.label_important_outline,
-        size: SizeConfig.safeBlockVertical * 3.2,
-        color: Colors.indigo,
+    return Card(
+      color: Colors.white,
+      elevation: 6.0,
+      shadowColor: Colors.black,
+      child: ListTile(
+        leading: Icon(
+          Icons.label_important_outline,
+          size: 24,
+          color: Colors.indigo,
+        ),
+        title: Text(individualTasks,style: kHeadText4,),
       ),
-      title: Text(individualTasks,style: kHeadText4,),
     );
   }
 }

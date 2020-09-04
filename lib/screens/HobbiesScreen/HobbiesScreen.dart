@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:resume_page/Constants/sizeConfig.dart';
 import 'package:resume_page/Constants/textStyles.dart';
 import 'package:resume_page/screens/HobbiesScreen/IndividualHobby.dart';
 
@@ -7,7 +6,6 @@ class HobbiesScreen extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     // TODO: implement build
     return WillPopScope(
       onWillPop: () async => true,
@@ -18,24 +16,24 @@ class HobbiesScreen extends StatelessWidget{
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(height: SizeConfig.safeBlockVertical * 2.66,),
+              SizedBox(height:20,),
               Center(child: Text("My Favorite Pastimes",style: kHeadText1,)),
-              SizedBox(height: SizeConfig.safeBlockVertical + 2.5,),
-              IndividualHobby(iconName:Icons.flight,hobbyName:"Me\: \“I want to travel more\”, the bank account\: \“Like, to the park?\"",delayDuration: 300,),
-              SizedBox(height: SizeConfig.safeBlockVertical * 2.66,),
+              SizedBox(height:10,),
+              IndividualHobby(iconName:Icons.flight,hobbyName:"Life is either a daring adventure, or nothing at all",delayDuration: 300,),
+              SizedBox(height:20,),
               IndividualHobby(iconName:Icons.headset,hobbyName:"Listening to Music",delayDuration: 500,),
-              SizedBox(height: SizeConfig.safeBlockVertical * 2.66,),
+              SizedBox(height:20,),
               IndividualHobby(iconName:Icons.mic,hobbyName:"Singing",delayDuration: 700,),
-              SizedBox(height: SizeConfig.safeBlockVertical * 2.66,),
+              SizedBox(height:20,),
               IndividualHobby(iconName:Icons.videocam,hobbyName:"Watching movies and series",delayDuration: 900,),
-              SizedBox(height: SizeConfig.safeBlockVertical * 2.66,),
+              SizedBox(height:20,),
               IndividualHobby(iconName:Icons.desktop_mac,hobbyName:"Doing Projects",delayDuration: 1100,),
-              SizedBox(height: SizeConfig.safeBlockVertical * 2.66,),
+              SizedBox(height:20,),
               IndividualHobby(iconName:Icons.palette,hobbyName:"Arts And Crafts",delayDuration: 1100,),
-              SizedBox(height: SizeConfig.safeBlockVertical * 2.66,),
-              IndividualHobby(iconName:Icons.sports_tennis,hobbyName: "Competed in many Badminton matches and have won few",delayDuration: 1200,),
-              SizedBox(height: SizeConfig.safeBlockVertical * 2.66,),
-              IndividualHobby(iconName:Icons.self_improvement,hobbyName:"My favorite asana in yoga is Savasana",delayDuration: 1300,),
+              SizedBox(height:20,),
+              IndividualHobby(iconName:Icons.sports_tennis,hobbyName: "Badminton",delayDuration: 1200,),
+              SizedBox(height:20,),
+              IndividualHobby(iconName:Icons.self_improvement,hobbyName:"Shavasana is one of my favorite Asanas!",delayDuration: 1300,),
             ],
           ),
         )

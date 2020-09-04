@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:resume_page/Constants/sizeConfig.dart';
 import 'package:resume_page/Constants/textStyles.dart';
 
 class IndividualAwards extends StatelessWidget {
@@ -8,14 +7,18 @@ class IndividualAwards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
-    return ListTile(
-      leading: Icon(
-        Icons.label_important_outline,
-        size: SizeConfig.safeBlockVertical  * 2.9,
-        color: Colors.indigo,
+    return Card(
+      color: Colors.white,
+      elevation: 6.0,
+      shadowColor: Colors.black,
+      child: ListTile(
+        leading: Icon(
+          Icons.label_important_outline,
+          size: 24,
+          color: Colors.indigo,
+        ),
+        title: Text(individualAward,style: kHeadText4,),
       ),
-      title: Text(individualAward,style: kHeadText4,),
     );
   }
 }

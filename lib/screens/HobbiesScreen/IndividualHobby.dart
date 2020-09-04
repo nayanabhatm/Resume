@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:resume_page/Constants/sizeConfig.dart';
 import 'package:resume_page/Constants/textStyles.dart';
 
 class IndividualHobby extends StatelessWidget {
@@ -10,7 +9,6 @@ class IndividualHobby extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return TweenAnimationBuilder(
       duration: Duration(milliseconds: delayDuration),
       tween: Tween<double>(begin: 500,end: 0),
@@ -18,17 +16,14 @@ class IndividualHobby extends StatelessWidget {
         return Transform.translate(
             offset: Offset(-size,0),
             child: SizedBox(
-              width: SizeConfig.safeBlockHorizontal * 39.06,
+              width: 570,
               child: Card(
                 shadowColor: Colors.white,
-                elevation: SizeConfig.safeBlockVertical,
+                elevation: 6,
                 color: Colors.lightBlue,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ListTile(
-                    leading: Icon(iconName,size: SizeConfig.safeBlockHorizontal * 3.9,),
-                    title: Text(hobbyName,style: kHeadText3,),
-                  ),
+                child: ListTile(
+                  leading: Icon(iconName,size: 45,),
+                  title: Text(hobbyName,style: kHeadText3,),
                 ),
               ),
             )

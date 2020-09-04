@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:resume_page/Constants/sizeConfig.dart';
 import 'package:resume_page/Constants/textStyles.dart';
 
 class EducationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return WillPopScope(
       onWillPop: () async => true,
       child: Scaffold(
@@ -21,18 +19,18 @@ class EducationScreen extends StatelessWidget {
                           return Transform.translate(
                               offset: Offset(-size,0),
                               child:Padding(
-                                padding: EdgeInsets.only(top:SizeConfig.safeBlockVertical),
+                                padding: EdgeInsets.only(top:8),
                                 child: Image.asset(
-                                  '/images/college.jpg',
-                                  width: SizeConfig.safeBlockHorizontal * 19.5,
-                                  height: SizeConfig.safeBlockHorizontal * 19.5,
+                                  'assets/images/college.jpg',
+                                  width: 300,
+                                  height: 300,
                                 ),
                               ),
                           );
                         }
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top:SizeConfig.safeBlockHorizontal * 2),
+                      padding: EdgeInsets.only(top:32),
                       child: Text(
                         "Education Details",
                         style: kHeadText1,

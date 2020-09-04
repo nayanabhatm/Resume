@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:resume_page/Constants/sizeConfig.dart';
 import 'package:resume_page/Constants/textStyles.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -11,7 +10,6 @@ class IndividualProject extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     return TweenAnimationBuilder(
       duration: Duration(milliseconds:delayDuration),
       tween: Tween<double>(begin: 500,end: 0),
@@ -19,10 +17,10 @@ class IndividualProject extends StatelessWidget {
         return Transform.translate(
             offset: Offset(-size,0),
             child: SizedBox(
-              width: SizeConfig.safeBlockHorizontal * 45.5,
+              width: 700,
               child: Card(
                 shadowColor: Colors.white,
-                elevation: SizeConfig.safeBlockVertical,
+                elevation: 6.0,
                 color: Colors.lightBlue,
                 child: ListTile(
                   leading: Text(projectName,style: kHeadText2,),
