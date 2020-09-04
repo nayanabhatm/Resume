@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class HelloThere extends StatefulWidget {
   @override
@@ -33,7 +32,8 @@ class _HelloThereState extends State<HelloThere>{
         body: Center(
           child: TyperAnimatedTextKit(
               text: ["Hello There...", "I am Nayana"],
-              textStyle: GoogleFonts.kaushanScript(
+              textStyle: TextStyle(
+                fontFamily: 'Kaushan Script',
                 color: Colors.blueAccent.shade50,
                 fontSize: 150,
                 fontWeight: FontWeight.bold,
