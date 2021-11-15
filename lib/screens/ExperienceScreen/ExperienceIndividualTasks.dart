@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:resume_page/Constants/textStyles.dart';
+import 'package:resume_page/utils/styles.dart';
 
 class ExperienceIndividualTasks extends StatelessWidget {
   final String individualTasks;
@@ -7,17 +7,14 @@ class ExperienceIndividualTasks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.white,
-      elevation: 6.0,
-      shadowColor: Colors.black,
-      child: ListTile(
-        leading: Icon(
-          Icons.label_important_outline,
-          size: 24,
-          color: Colors.indigo,
-        ),
-        title: Text(individualTasks,style: kHeadText4,),
+    return ListTile(
+      leading: CircleAvatar(
+        radius: Styles.padding10,
+        backgroundColor: Styles.lightGreen,
+      ),
+      title: Text(
+        individualTasks,
+        style: Theme.of(context).textTheme.headline4,
       ),
     );
   }
