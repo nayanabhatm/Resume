@@ -61,10 +61,12 @@ class _IndividualProjectState extends State<IndividualProject> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    widget.imagePath,
-                    width: Styles.padding150,
-                    height: Styles.padding150,
+                  Flexible(
+                    child: Image.asset(
+                      widget.imagePath,
+                      width: Styles.padding150,
+                      height: Styles.padding150,
+                    ),
                   ),
                   Text(
                     widget.projectName,
