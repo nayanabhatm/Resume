@@ -5,81 +5,54 @@ import 'package:resume_page/utils/styles.dart';
 class EducationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
-      child: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top: Styles.padding30),
-            child: Text(
-              Constants.educationDetails,
-              style: Theme.of(context).textTheme.headline1,
+    ThemeData themeData = Theme.of(context);
+
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: Styles.padding30),
+          child: Text(
+            Constants.educationDetails,
+            style: themeData.textTheme.headline1,
+          ),
+        ),
+        DataTable(
+          columns: [
+            DataColumn(
+              label: Text(''),
             ),
-          ),
-          DataTable(
-            columns: [
-              DataColumn(
-                label: Text(""),
-              ),
-              DataColumn(
-                label: Text(""),
-              ),
-            ],
-            rows: [
-              tableRow(Constants.collegeName, Constants.sit, context),
-              tableRow(Constants.branch, Constants.cse, context),
-              tableRow(Constants.batch, Constants.batchDate, context),
-              tableRow(Constants.cgpa, Constants.cgpaNumber, context),
-              tableRow(Constants.getRank, Constants.rank, context),
-              tableRow(Constants.otherHobbies, Constants.myHobbies, context)
-            ],
-          ),
-          Container(
-            margin: const EdgeInsets.all(Styles.padding20),
-            child: Text(
-              Constants.myArtWorks,
-              style: Theme.of(context).textTheme.headline5,
+            DataColumn(
+              label: Text(''),
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                Constants.artWork1,
-                width: Styles.width300,
-                height: Styles.width300,
-              ),
-              Image.asset(
-                Constants.artWork3,
-                width: Styles.width300,
-                height: Styles.width300,
-              ),
-              Image.asset(
-                Constants.artWork2,
-                width: Styles.width300,
-                height: Styles.width300,
-              ),
-            ],
-          )
-        ],
-      ),
+          ],
+          rows: [
+            educationRow(Constants.collegeName, Constants.sit, context),
+            educationRow(Constants.branch, Constants.cse, context),
+            educationRow(Constants.batch, Constants.batchDate, context),
+            educationRow(Constants.cgpa, Constants.cgpaNumber, context),
+            educationRow(Constants.getRank, Constants.rank, context),
+          ],
+        ),
+      ],
     );
   }
 
-  DataRow tableRow(String heading, String value, BuildContext context) {
+  DataRow educationRow(String heading, String value, BuildContext context) {
+    ThemeData themeData = Theme.of(context);
+
     return DataRow(
       cells: [
         DataCell(
           Text(
             heading,
-            style: Theme.of(context).textTheme.headline5,
+            style: themeData.textTheme.headline5,
           ),
         ),
         DataCell(
           Text(
             value,
-            style: Theme.of(context).textTheme.headline5,
+            style: themeData.textTheme.headline5,
           ),
         ),
       ],

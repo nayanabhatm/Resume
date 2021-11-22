@@ -4,6 +4,7 @@ import 'package:resume_page/screens/ExperienceScreen/ExperienceScreen.dart';
 import 'package:resume_page/screens/ProfileDetailsScreen/ProfileDetailsScreen.dart';
 import 'package:resume_page/screens/ProjectsScreen/ProjectsScreen.dart';
 import 'package:resume_page/screens/ResumeDashboard/ResumeDashboard.dart';
+import 'package:resume_page/screens/SkillsScreen/SkillsScreen.dart';
 import 'package:resume_page/utils/constants.dart';
 
 void main() {
@@ -16,42 +17,38 @@ class ResumeApp extends StatelessWidget {
     return MaterialApp(
       title: 'Resume',
       theme: ThemeData(
+        primaryColor: Color(0xff37474f),
+        primaryColorLight: Color(0xff62727b),
+        primaryColorDark: Color(0xff102027),
         fontFamily: 'Lato',
-        iconTheme: IconThemeData(
-          color: Colors.amberAccent,
-        ),
         textTheme: TextTheme(
           headline1: TextStyle(
             fontSize: 32.0,
-            color: Colors.lightGreen,
             shadows: <Shadow>[
               Shadow(
                 offset: Offset(1, 1),
                 blurRadius: 2,
-                color: Colors.amberAccent,
+                color: Colors.white,
               ),
             ],
           ),
           headline2: TextStyle(
-            fontSize: 22.0,
-            color: Colors.tealAccent,
+            fontSize: 26.0,
           ),
           headline3: TextStyle(
-            fontSize: 20.0,
+            fontSize: 24.0,
           ),
           headline4: TextStyle(
-            fontSize: 18.0,
+            fontSize: 22.0,
           ),
           headline5: TextStyle(
             fontSize: 20.0,
-            // color: Colors.white,
           ),
-          subtitle1: TextStyle(
-            fontSize: 32.0,
-            color: Colors.tealAccent,
+          bodyText1: TextStyle(
+            fontSize: 18.0,
           ),
-          subtitle2: TextStyle(
-            fontSize: 14.0,
+          bodyText2: TextStyle(
+            fontSize: 16.0,
           ),
         ),
       ),
@@ -61,7 +58,8 @@ class ResumeApp extends StatelessWidget {
         Constants.education: (context) => EducationScreen(),
         Constants.experience: (context) => ExperienceScreen(),
         Constants.projects: (context) => ProjectsScreen(),
-        Constants.profile: (context) => ProfileDetailsScreen()
+        Constants.profile: (context) => ProfileDetailsScreen(),
+        Constants.skills: (context) => SkillsScreen(),
       },
     );
   }

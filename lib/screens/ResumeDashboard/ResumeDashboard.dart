@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:resume_page/screens/EducationScreen/EducationScreen.dart';
 import 'package:resume_page/screens/ExperienceScreen/ExperienceScreen.dart';
 import 'package:resume_page/screens/ProfileDetailsScreen/ProfileDetailsScreen.dart';
 import 'package:resume_page/screens/ProjectsScreen/ProjectsScreen.dart';
+import 'package:resume_page/screens/SkillsScreen/SkillsScreen.dart';
 import 'package:resume_page/utils/constants.dart';
 import 'package:resume_page/utils/styles.dart';
 
@@ -15,15 +17,6 @@ class ResumeDashboard extends StatefulWidget {
 class _ResumeDashboardState extends State<ResumeDashboard>
     with SingleTickerProviderStateMixin {
   final ScrollController _scrollController = ScrollController();
-  AnimationController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller =
-        AnimationController(vsync: this, duration: Duration(seconds: 10))
-          ..repeat();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,91 +27,79 @@ class _ResumeDashboardState extends State<ResumeDashboard>
       onWillPop: () async => false,
       child: Scaffold(
         body: ListView(
+          shrinkWrap: true,
           controller: _scrollController,
           children: [
             Container(
-              color: Color(0xffff4c68),
+              color: themeData.primaryColor,
               width: mediaQuery.size.width,
               height: mediaQuery.size.height,
               child: Column(
                 children: [
-                  Text(
-                    Constants.portfolioStr,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: Constants.fontFamilyKaushanScript,
-                      color: Colors.blue.shade100,
-                      fontSize: mediaQuery.size.width / 25,
-                      fontWeight: FontWeight.bold,
-                      shadows: [
-                        Shadow(
-                          color: Colors.blueAccent,
-                          offset: Offset(1, 1),
-                          blurRadius: Styles.textShadowBlurRadius,
-                        )
-                      ],
+                  SizedBox(
+                    height: Styles.padding20,
+                  ),
+                  TweenAnimationBuilder(
+                    tween: Tween<double>(begin: 500, end: 0),
+                    duration: Duration(seconds: 1),
+                    builder: (BuildContext context, double size, Widget child) {
+                      return Transform.translate(
+                        offset: Offset(-size, 0),
+                        child: child,
+                      );
+                    },
+                    child: Text(
+                      Constants.portfolioStr,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: Constants.fontFamilyKaushanScript,
+                        color: Styles.mainHeadingColor,
+                        fontSize: mediaQuery.size.width / 25,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   SizedBox(
                     height: Styles.padding30,
                   ),
-                  Text(
-                    Constants.nameStr,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: Constants.fontFamilyKaushanScript,
-                      color: Colors.lightGreen.shade500,
-                      fontSize: mediaQuery.size.width / 35,
-                      fontWeight: FontWeight.bold,
-                      shadows: [
-                        Shadow(
-                          color: Colors.lightGreen,
-                          offset: Offset(1, 1),
-                          blurRadius: Styles.textShadowBlurRadius,
-                        )
-                      ],
+                  TweenAnimationBuilder(
+                    tween: Tween<double>(begin: 500, end: 0),
+                    duration: Duration(seconds: 1),
+                    builder: (BuildContext context, double size, Widget child) {
+                      return Transform.translate(
+                        offset: Offset(size, 0),
+                        child: child,
+                      );
+                    },
+                    child: Text(
+                      Constants.name,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: Constants.fontFamilyKaushanScript,
+                        color: Styles.white,
+                        fontSize: mediaQuery.size.width / 35,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   SizedBox(
-                    height: Styles.padding30,
+                    height: Styles.padding100,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      getTransparentAvatar(),
                       MenuItemAnimation(
                         scrollController: _scrollController,
                         screenName: Constants.experience,
                         imagePath: Constants.experienceImagePath,
                       ),
                       getTransparentAvatar(),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
                       MenuItemAnimation(
                         scrollController: _scrollController,
-                        screenName: Constants.education,
-                        imagePath: Constants.educationImagePath,
+                        screenName: Constants.profile,
+                        imagePath: Constants.profileImagePath,
                       ),
-                      AnimatedBuilder(
-                        animation: _controller,
-                        builder: (_, child) {
-                          return Transform.rotate(
-                            angle: _controller.value * 2,
-                            child: child,
-                          );
-                        },
-                        child: CircleAvatar(
-                          child: Text(
-                            'My Resume',
-                            style: themeData.textTheme.headline5,
-                          ),
-                          radius: 110,
-                          backgroundColor: Colors.transparent,
-                        ),
-                      ),
+                      getTransparentAvatar(),
                       MenuItemAnimation(
                         scrollController: _scrollController,
                         screenName: Constants.projects,
@@ -126,26 +107,52 @@ class _ResumeDashboardState extends State<ResumeDashboard>
                       ),
                     ],
                   ),
+                  SizedBox(
+                    height: Styles.padding10,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       getTransparentAvatar(),
                       MenuItemAnimation(
                         scrollController: _scrollController,
-                        screenName: Constants.profile,
-                        imagePath: Constants.profileImagePath,
+                        screenName: Constants.education,
+                        imagePath: Constants.educationImagePath,
+                        animateFromTop: false,
+                      ),
+                      getTransparentAvatar(),
+                      MenuItemAnimation(
+                        scrollController: _scrollController,
+                        screenName: Constants.skills,
+                        imagePath: Constants.skillsImagesPath,
                         animateFromTop: false,
                       ),
                       getTransparentAvatar(),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
-            EducationScreen(),
             ExperienceScreen(),
             ProjectsScreen(),
+            EducationScreen(),
+            SkillsScreen(),
             ProfileDetailsScreen(),
+            SizedBox(
+              width: Styles.padding50,
+              height: Styles.padding50,
+              child: IconButton(
+                icon: Icon(FontAwesomeIcons.chevronUp),
+                iconSize: Styles.padding30,
+                onPressed: () {
+                  _scrollController.animateTo(
+                    0,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeIn,
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),
@@ -154,7 +161,7 @@ class _ResumeDashboardState extends State<ResumeDashboard>
 
   CircleAvatar getTransparentAvatar() {
     return CircleAvatar(
-      radius: 110,
+      radius: Styles.radius110,
       backgroundColor: Colors.transparent,
     );
   }
@@ -207,11 +214,11 @@ class DashboardMenuItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(Styles.circularRadius),
-      splashColor: Styles.whiteColor.withOpacity(0.1),
-      hoverColor: Styles.whiteColor.withOpacity(0.1),
+      splashColor: Styles.white.withOpacity(0.1),
+      hoverColor: Styles.white.withOpacity(0.1),
       onTap: () {
         switch (screenName) {
-          case Constants.education:
+          case Constants.experience:
             {
               scrollController.animateTo(
                 MediaQuery.of(context).size.height,
@@ -220,19 +227,28 @@ class DashboardMenuItem extends StatelessWidget {
               );
               break;
             }
-          case Constants.experience:
+          case Constants.projects:
             {
               scrollController.animateTo(
-                MediaQuery.of(context).size.height * 2,
+                MediaQuery.of(context).size.height * 1.9,
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeIn,
               );
               break;
             }
-          case Constants.projects:
+          case Constants.education:
             {
               scrollController.animateTo(
-                MediaQuery.of(context).size.height * 3,
+                MediaQuery.of(context).size.height * 2.5,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeIn,
+              );
+              break;
+            }
+          case Constants.skills:
+            {
+              scrollController.animateTo(
+                MediaQuery.of(context).size.height * 2.9,
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeIn,
               );
@@ -241,7 +257,7 @@ class DashboardMenuItem extends StatelessWidget {
           case Constants.profile:
             {
               scrollController.animateTo(
-                MediaQuery.of(context).size.height * 4,
+                MediaQuery.of(context).size.height * 3.6,
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeIn,
               );
@@ -252,7 +268,7 @@ class DashboardMenuItem extends StatelessWidget {
         }
       },
       child: CircleAvatar(
-        radius: 110,
+        radius: Styles.radius110,
         backgroundImage: AssetImage(
           imagePath,
         ),

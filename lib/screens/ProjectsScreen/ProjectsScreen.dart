@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:resume_page/screens/ProjectsScreen/IndividualProject.dart';
+import 'package:resume_page/utils/constants.dart';
 import 'package:resume_page/utils/styles.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProjectsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: Styles.padding50),
+      padding: const EdgeInsets.symmetric(vertical: Styles.padding70),
+      color: Theme.of(context).primaryColor,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -18,59 +21,61 @@ class ProjectsScreen extends StatelessWidget {
           ),
           Center(
             child: Text(
-              "Projects",
-              style: Theme.of(context).textTheme.headline1,
+              Constants.projectsTitle,
+              style: Theme.of(context).textTheme.headline1.copyWith(
+                    color: Styles.white,
+                  ),
             ),
           ),
           SizedBox(
-            height: Styles.padding20,
-          ),
-          IndividualProject(
-            projectName: "Status Keeper: ",
-            projectDescription:
-                "An App to save the whatsapp status Images and Videos",
-            projectLink: "https://github.com/nayanabhatm/status_keeper",
-            delayDuration: 300,
+            height: Styles.padding50,
           ),
           SizedBox(
-            height: Styles.padding20,
-          ),
-          IndividualProject(
-            projectName: "Text Editor: ",
-            projectDescription:
-                "An App to read/write text files with save,find and replace features",
-            projectLink: "https://github.com/nayanabhatm/texteditor",
-            delayDuration: 500,
-          ),
-          SizedBox(
-            height: Styles.padding20,
-          ),
-          IndividualProject(
-            projectName: "Portfolio: ",
-            projectDescription: "A WebApp to show my course of life in brief:)",
-            projectLink: "https://github.com/nayanabhatm/Resume",
-            delayDuration: 700,
-          ),
-          SizedBox(
-            height: Styles.padding20,
-          ),
-          IndividualProject(
-            projectName: "Cryptocurrency:",
-            projectDescription:
-                "An App to get the details of cryptocurriences like bitcoin in different curriencies",
-            projectLink: "https://github.com/nayanabhatm/cryptocurrency",
-            delayDuration: 900,
+            height: MediaQuery.of(context).size.height / 2.5,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: Constants.projectsList.length,
+              itemBuilder: (BuildContext context, int index) {
+                return SizedBox(
+                  width: MediaQuery.of(context).size.width / 3,
+                  child: IndividualProject(
+                    projectName: Constants.projectsList[index].projectName,
+                    projectDescription:
+                        Constants.projectsList[index].projectDescription,
+                    projectLink: Constants.projectsList[index].projectLink,
+                    imagePath: Constants.projectsList[index].imagePath,
+                  ),
+                );
+              },
+            ),
           ),
           SizedBox(
-            height: Styles.padding20,
+            height: Styles.padding30,
           ),
-          IndividualProject(
-            projectName: "BMI Calculator:",
-            projectDescription:
-                "An App to get calculate the BMI of a person and display if the weight is normal",
-            projectLink: "https://github.com/nayanabhatm/BMI_Calculator",
-            delayDuration: 1100,
-          ),
+          OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              side: BorderSide(
+                width: Styles.padding2,
+                color: Styles.white,
+              ),
+            ),
+            onPressed: () async {
+              if (await canLaunch(Constants.githubLink)) {
+                launch(Constants.githubLink);
+              } else {
+                throw 'Couldn\'t launch ${Constants.githubLink}';
+              }
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(Styles.padding10),
+              child: Text(
+                Constants.moreProjects,
+                style: Theme.of(context).textTheme.headline3.copyWith(
+                      color: Styles.white,
+                    ),
+              ),
+            ),
+          )
         ],
       ),
     );

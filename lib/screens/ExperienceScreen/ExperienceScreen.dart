@@ -1,160 +1,140 @@
 import 'package:flutter/material.dart';
-import 'package:resume_page/screens/ExperienceScreen/ExperienceIndividualTasks.dart';
+import 'package:resume_page/utils/constants.dart';
+import 'package:resume_page/utils/styles.dart';
 
 class ExperienceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height,
+    MediaQueryData mediaQueryData = MediaQuery.of(context);
+
+    return Container(
+      margin: const EdgeInsets.all(Styles.padding50),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "Work Experience",
+            Constants.experienceTitle,
             style: Theme.of(context).textTheme.headline1,
           ),
           SizedBox(
-            width: 600,
-            child: Card(
-              color: Colors.white,
-              shadowColor: Colors.white,
-              elevation: 6.0,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Container(
-                    color: Colors.lightBlue,
-                    child: Text(
-                      " Software Engineer",
-                      style: Theme.of(context).textTheme.headline2,
-                    ),
-                  ),
-                  Text(
-                    " Informatica",
-                    style: Theme.of(context).textTheme.headline3,
-                  ),
-                  Text(
-                    " (Oct 2015 - Aug 2020)",
-                    style: Theme.of(context).textTheme.subtitle2,
-                  ),
-                  SizedBox(
-                    height: 7.5,
-                  ),
-                  ExperienceIndividualTasks(
-                    individualTasks:
-                        "Have developed and delivered complex projects well within the deadline",
-                  ),
-                  ExperienceIndividualTasks(
-                    individualTasks:
-                        "Have debugged and resolved complex issues faced by multiple clients.",
-                  ),
-                  ExperienceIndividualTasks(
-                    individualTasks:
-                        "Helped multiple clients to adopt more cloud services which inturn improved the agility and reduced the costs.",
-                  ),
-                  ExperienceIndividualTasks(
-                    individualTasks:
-                        "Have performed real-time app integration, process automation and Hybrid Integration between Cloud and On-Premise",
-                  )
-                ],
+            height: Styles.padding50,
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: SizedBox(
+              width: mediaQueryData.size.width / 2.2,
+              child: Card(
+                elevation: Styles.padding10,
+                child: experience(
+                  context,
+                  Constants.softwareEng,
+                  Constants.wrenchCmp,
+                  Constants.wrenchTenure,
+                  Constants.wrench,
+                ),
               ),
             ),
           ),
           SizedBox(
-            height: 10,
+            height: Styles.padding10,
           ),
-          SizedBox(
-            width: 600,
-            child: Card(
-              color: Colors.white,
-              shadowColor: Colors.white,
-              elevation: 6.0,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Container(
-                    color: Colors.lightBlue,
-                    child: Text(
-                      " Software Engineer",
-                      style: Theme.of(context).textTheme.headline2,
-                    ),
-                  ),
-                  Text(
-                    " Informatica",
-                    style: Theme.of(context).textTheme.headline3,
-                  ),
-                  Text(
-                    " (Oct 2015 - Aug 2020)",
-                    style: Theme.of(context).textTheme.subtitle2,
-                  ),
-                  SizedBox(
-                    height: 7.5,
-                  ),
-                  ExperienceIndividualTasks(
-                    individualTasks:
-                        "Have developed and delivered complex projects well within the deadline",
-                  ),
-                  ExperienceIndividualTasks(
-                    individualTasks:
-                        "Have debugged and resolved complex issues faced by multiple clients.",
-                  ),
-                  ExperienceIndividualTasks(
-                    individualTasks:
-                        "Helped multiple clients to adopt more cloud services which inturn improved the agility and reduced the costs.",
-                  ),
-                  ExperienceIndividualTasks(
-                    individualTasks:
-                        "Have performed real-time app integration, process automation and Hybrid Integration between Cloud and On-Premise",
-                  )
-                ],
+          Align(
+            alignment: Alignment.center,
+            child: SizedBox(
+              width: mediaQueryData.size.width / 2.2,
+              child: Card(
+                elevation: Styles.padding10,
+                child: experience(
+                  context,
+                  Constants.softwareEng,
+                  Constants.infaCmp,
+                  Constants.infaTenure,
+                  Constants.infa,
+                ),
               ),
             ),
           ),
           SizedBox(
-            height: 10,
+            height: Styles.padding10,
           ),
-          SizedBox(
-            width: 600,
-            child: Card(
-              color: Colors.white,
-              shadowColor: Colors.white,
-              elevation: 6.0,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Container(
-                    color: Colors.lightBlue,
-                    child: Text(
-                      " Intern",
-                      style: Theme.of(context).textTheme.headline2,
-                    ),
-                  ),
-                  Text(
-                    " Aricent",
-                    style: Theme.of(context).textTheme.headline3,
-                  ),
-                  Text(
-                    " (July 2014 - Aug 2014)",
-                    style: Theme.of(context).textTheme.subtitle2,
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  ExperienceIndividualTasks(
-                    individualTasks:
-                        "Assisted in migration of the entire project from one version to another version.",
-                  ),
-                  ExperienceIndividualTasks(
-                    individualTasks:
-                        "Collaborated with the team and contributed in automating many things in the project",
-                  ),
-                ],
+          Align(
+            alignment: Alignment.centerRight,
+            child: SizedBox(
+              width: mediaQueryData.size.width / 2.2,
+              child: Card(
+                elevation: Styles.padding10,
+                child: experience(
+                  context,
+                  Constants.intern,
+                  Constants.aricentCmp,
+                  Constants.aricentTenure,
+                  Constants.aricent,
+                ),
               ),
             ),
           )
         ],
       ),
+    );
+  }
+
+  Widget experience(BuildContext context, String title, String companyName,
+      String tenure, List<String> experiences) {
+    return Padding(
+      padding: const EdgeInsets.all(Styles.padding10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(vertical: Styles.padding10),
+            color: Theme.of(context).primaryColorDark,
+            child: Text(
+              ' $title',
+              style: Theme.of(context).textTheme.headline4.copyWith(
+                    color: Styles.white,
+                  ),
+            ),
+          ),
+          Text(
+            ' $companyName',
+            style: Theme.of(context).textTheme.headline3,
+          ),
+          Text(
+            ' $tenure',
+            style: Theme.of(context).textTheme.subtitle1.copyWith(
+                  color: Theme.of(context).primaryColorDark,
+                ),
+          ),
+          SizedBox(
+            height: Styles.padding10,
+          ),
+          experienceList(experiences),
+        ],
+      ),
+    );
+  }
+
+  ListView experienceList(List<String> experienceList) {
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: experienceList.length,
+      itemBuilder: (BuildContext context, int index) {
+        return Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
+          runAlignment: WrapAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(Styles.padding2),
+              child: Text(
+                '👉🏼 ${experienceList[index]}',
+                style: Theme.of(context).textTheme.bodyText2.copyWith(
+                      letterSpacing: 1,
+                    ),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }
