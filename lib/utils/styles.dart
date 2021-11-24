@@ -6,6 +6,7 @@ class Styles {
   static const double padding100 = 100.0;
   static const double padding70 = 70.0;
   static const double padding50 = 50.0;
+  static const double padding40 = 40.0;
   static const double padding30 = 30.0;
   static const double padding20 = 20.0;
   static const double padding10 = 10.0;
@@ -20,6 +21,7 @@ class Styles {
   static const double width500 = 500.0;
 
   static const Color white = Colors.white;
+  static const Color orange = Colors.orange;
   static const Color mainHeadingColor = Color(0xff84ffff);
   static const Color lightBlue = Color(0xff81d4fa);
   static Color lightGrey = Colors.grey.shade300;

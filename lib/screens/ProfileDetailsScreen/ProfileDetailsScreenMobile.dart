@@ -4,7 +4,7 @@ import 'package:resume_page/utils/constants.dart';
 import 'package:resume_page/utils/styles.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ProfileDetailsScreen extends StatelessWidget {
+class ProfileDetailsScreenMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
@@ -28,14 +28,14 @@ class ProfileDetailsScreen extends StatelessWidget {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(Styles.padding20),
+                  padding: const EdgeInsets.all(Styles.padding10),
                   child: Image.asset(
                     Constants.myPicImagePath,
-                    height: Styles.width300,
+                    height: Styles.width200,
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(Styles.padding20),
+                  padding: const EdgeInsets.all(Styles.padding5),
                   child: Text(
                     Constants.name,
                     style: themeData.textTheme.headline4.copyWith(
@@ -46,14 +46,20 @@ class ProfileDetailsScreen extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(
+            height: Styles.padding10,
+          ),
           Padding(
-            padding: const EdgeInsets.all(Styles.padding30),
+            padding: const EdgeInsets.all(Styles.padding2),
             child: Text(
               Constants.softwareEngineerStr,
               style:
-                  themeData.textTheme.headline3.copyWith(color: Styles.white),
+                  themeData.textTheme.headline5.copyWith(color: Styles.white),
               textAlign: TextAlign.center,
             ),
+          ),
+          SizedBox(
+            height: Styles.padding20,
           ),
           ...Constants.profileDetails
               .map(
@@ -106,7 +112,7 @@ class ProfileDetailsScreen extends StatelessWidget {
                   type: MaterialType.transparency,
                   child: IconButton(
                     icon: Icon(FontAwesomeIcons.github),
-                    iconSize: Styles.padding50,
+                    iconSize: Styles.padding30,
                     hoverColor: Styles.mainHeadingColor,
                     color: Styles.white,
                     onPressed: () async {
@@ -120,12 +126,12 @@ class ProfileDetailsScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: Styles.padding20),
+                      const EdgeInsets.symmetric(horizontal: Styles.padding10),
                   child: Material(
                     type: MaterialType.transparency,
                     child: IconButton(
                       icon: FaIcon(FontAwesomeIcons.linkedin),
-                      iconSize: Styles.padding50,
+                      iconSize: Styles.padding30,
                       color: Styles.white,
                       hoverColor: Styles.mainHeadingColor,
                       onPressed: () async {
@@ -143,7 +149,7 @@ class ProfileDetailsScreen extends StatelessWidget {
                   child: IconButton(
                     icon: FaIcon(FontAwesomeIcons.twitter),
                     hoverColor: Styles.mainHeadingColor,
-                    iconSize: Styles.padding50,
+                    iconSize: Styles.padding30,
                     color: Styles.white,
                     onPressed: () async {
                       if (await canLaunch(Constants.twitter)) {
@@ -191,7 +197,7 @@ class Details extends StatelessWidget {
               child: ListTile(
                 leading: Icon(
                   iconName,
-                  size: Styles.padding30,
+                  size: Styles.padding20,
                 ),
                 title: Text(
                   details,

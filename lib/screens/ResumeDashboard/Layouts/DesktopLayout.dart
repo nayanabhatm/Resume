@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:resume_page/screens/EducationScreen/EducationScreen.dart';
-import 'package:resume_page/screens/ExperienceScreen/ExperienceScreen.dart';
-import 'package:resume_page/screens/ProfileDetailsScreen/ProfileDetailsScreen.dart';
-import 'package:resume_page/screens/ProjectsScreen/ProjectsScreen.dart';
-import 'package:resume_page/screens/ResumeDashboard/Widgets/MenuItemWidget.dart';
-import 'package:resume_page/screens/ResumeDashboard/Widgets/TransparentAvatar.dart';
-import 'package:resume_page/screens/SkillsScreen/SkillsScreen.dart';
+import 'package:resume_page/screens/EducationScreen/EducationScreenDesktop.dart';
+import 'package:resume_page/screens/ExperienceScreen/ExperienceScreenDesktop.dart';
+import 'package:resume_page/screens/ProfileDetailsScreen/ProfileDetailsScreenDesktop.dart';
+import 'package:resume_page/screens/ProjectsScreen/ProjectsScreenDesktop.dart';
+import 'package:resume_page/screens/ResumeDashboard/Widgets/DashboardMenuItemWidget.dart';
+import 'package:resume_page/screens/SkillsScreen/SkillsScreenDesktop.dart';
 import 'package:resume_page/utils/constants.dart';
 import 'package:resume_page/utils/styles.dart';
 
@@ -20,9 +19,8 @@ Widget desktopLayout(ThemeData themeData, MediaQueryData mediaQuery,
         controller: scrollController,
         children: [
           Container(
-            color: themeData.primaryColor,
             width: mediaQuery.size.width,
-            height: mediaQuery.size.height,
+            color: themeData.primaryColor,
             child: Column(
               children: [
                 SizedBox(
@@ -85,23 +83,23 @@ Widget desktopLayout(ThemeData themeData, MediaQueryData mediaQuery,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    MenuItemAnimation(
+                    DashboardMenuItem(
                       scrollController: scrollController,
                       screenName: Constants.experience,
                       imagePath: Constants.experienceImagePath,
                     ),
                     Flexible(
-                      child: TransparentAvatar.getTransparentAvatar(),
+                      child: getTransparentAvatar(),
                     ),
-                    MenuItemAnimation(
+                    DashboardMenuItem(
                       scrollController: scrollController,
                       screenName: Constants.profile,
                       imagePath: Constants.profileImagePath,
                     ),
                     Flexible(
-                      child: TransparentAvatar.getTransparentAvatar(),
+                      child: getTransparentAvatar(),
                     ),
-                    MenuItemAnimation(
+                    DashboardMenuItem(
                       scrollController: scrollController,
                       screenName: Constants.projects,
                       imagePath: Constants.projectsImagePath,
@@ -115,36 +113,37 @@ Widget desktopLayout(ThemeData themeData, MediaQueryData mediaQuery,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Flexible(
-                      child: TransparentAvatar.getTransparentAvatar(),
+                      child: getTransparentAvatar(),
                     ),
-                    MenuItemAnimation(
+                    DashboardMenuItem(
                       scrollController: scrollController,
                       screenName: Constants.education,
                       imagePath: Constants.educationImagePath,
-                      animateFromTop: false,
                     ),
                     Flexible(
-                      child: TransparentAvatar.getTransparentAvatar(),
+                      child: getTransparentAvatar(),
                     ),
-                    MenuItemAnimation(
+                    DashboardMenuItem(
                       scrollController: scrollController,
                       screenName: Constants.skills,
                       imagePath: Constants.skillsImagesPath,
-                      animateFromTop: false,
                     ),
                     Flexible(
-                      child: TransparentAvatar.getTransparentAvatar(),
+                      child: getTransparentAvatar(),
                     ),
                   ],
                 ),
+                SizedBox(
+                  height: Styles.padding200,
+                )
               ],
             ),
           ),
-          ExperienceScreen(),
-          ProjectsScreen(),
-          EducationScreen(),
-          SkillsScreen(),
-          ProfileDetailsScreen(),
+          ExperienceScreenDesktop(),
+          ProjectsScreenDesktop(),
+          EducationScreenDesktop(),
+          SkillsScreenDesktop(),
+          ProfileDetailsScreenDesktop(),
           IconButton(
             icon: Icon(FontAwesomeIcons.chevronUp),
             iconSize: Styles.padding30,
@@ -159,5 +158,12 @@ Widget desktopLayout(ThemeData themeData, MediaQueryData mediaQuery,
         ],
       ),
     ),
+  );
+}
+
+CircleAvatar getTransparentAvatar() {
+  return CircleAvatar(
+    radius: Styles.radius110,
+    backgroundColor: Colors.transparent,
   );
 }

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:resume_page/utils/styles.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class IndividualProject extends StatefulWidget {
+class IndividualProjectMobile extends StatefulWidget {
   final String projectName, projectDescription, projectLink, imagePath;
 
-  IndividualProject({
+  IndividualProjectMobile({
     this.projectName,
     this.projectDescription,
     this.projectLink,
@@ -13,35 +13,38 @@ class IndividualProject extends StatefulWidget {
   });
 
   @override
-  State<IndividualProject> createState() => _IndividualProjectState();
+  State<IndividualProjectMobile> createState() =>
+      _IndividualProjectMobileState();
 }
 
-class _IndividualProjectState extends State<IndividualProject> {
+class _IndividualProjectMobileState extends State<IndividualProjectMobile> {
   bool isHovered = false;
 
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
+    MediaQueryData mediaQueryData = MediaQuery.of(context);
+
     return Transform.scale(
       scale: isHovered ? 1.05 : 1.0,
       child: Container(
         margin: const EdgeInsets.all(Styles.padding20),
-        width: MediaQuery.of(context).size.width / 2,
+        width: mediaQueryData.size.width - 50,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(Styles.padding10),
           boxShadow: isHovered
               ? [
                   BoxShadow(
-                    color: Styles.borderYellow,
-                    spreadRadius: 8.0,
-                    blurRadius: 1.0,
-                  )
+                    color: themeData.primaryColorLight,
+                    blurRadius: 20.0,
+                  ),
                 ]
               : null,
         ),
         child: Card(
-          margin: const EdgeInsets.all(Styles.padding10),
+          margin: const EdgeInsets.all(Styles.padding5),
           elevation: Styles.padding10,
+          shadowColor: Styles.orange,
           child: InkWell(
             onHover: (value) {
               setState(() {
@@ -56,7 +59,11 @@ class _IndividualProjectState extends State<IndividualProject> {
               }
             },
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: Styles.padding10),
+              padding: const EdgeInsets.only(
+                left: Styles.padding5,
+                right: Styles.padding5,
+                bottom: Styles.padding5,
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -64,8 +71,9 @@ class _IndividualProjectState extends State<IndividualProject> {
                   Flexible(
                     child: Image.asset(
                       widget.imagePath,
-                      width: Styles.padding150,
-                      height: Styles.padding150,
+                      fit: BoxFit.cover,
+                      width: Styles.padding70,
+                      height: Styles.padding70,
                     ),
                   ),
                   Text(

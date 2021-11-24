@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:resume_page/utils/constants.dart';
 import 'package:resume_page/utils/styles.dart';
 
-class EducationScreen extends StatelessWidget {
+class EducationScreenMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
@@ -46,13 +46,13 @@ class EducationScreen extends StatelessWidget {
         DataCell(
           Text(
             heading,
-            style: themeData.textTheme.headline5,
+            style: themeData.textTheme.bodyText2,
           ),
         ),
         DataCell(
           Text(
             value,
-            style: themeData.textTheme.headline5,
+            style: themeData.textTheme.bodyText1,
           ),
         ),
       ],

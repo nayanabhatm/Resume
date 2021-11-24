@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:resume_page/screens/EducationScreen/EducationScreen.dart';
-import 'package:resume_page/screens/ExperienceScreen/ExperienceScreen.dart';
-import 'package:resume_page/screens/ProfileDetailsScreen/ProfileDetailsScreen.dart';
-import 'package:resume_page/screens/ProjectsScreen/ProjectsScreen.dart';
-import 'package:resume_page/screens/ResumeDashboard/Widgets/MenuItemWidget.dart';
-import 'package:resume_page/screens/ResumeDashboard/Widgets/TransparentAvatar.dart';
-import 'package:resume_page/screens/SkillsScreen/SkillsScreen.dart';
+import 'package:resume_page/screens/EducationScreen/EducationScreenMobile.dart';
+import 'package:resume_page/screens/ExperienceScreen/ExperienceScreenMobile.dart';
+import 'package:resume_page/screens/ProfileDetailsScreen/ProfileDetailsScreenMobile.dart';
+import 'package:resume_page/screens/ProjectsScreen/ProjectsScreenMobile.dart';
+import 'package:resume_page/screens/ResumeDashboard/Widgets/DashboardMenuItemWidget.dart';
+import 'package:resume_page/screens/SkillsScreen/SkillsScreenMobile.dart';
 import 'package:resume_page/utils/constants.dart';
 import 'package:resume_page/utils/styles.dart';
 
@@ -22,12 +21,12 @@ Widget mobileLayout(ThemeData themeData, MediaQueryData mediaQuery,
           children: [
             Container(
               color: themeData.primaryColor,
-              // width: mediaQuery.size.width,
-              // height: mediaQuery.size.height,
+              width: mediaQuery.size.width,
+              // height: mediaQuery.size.height + 40,
               child: Column(
                 children: [
                   SizedBox(
-                    height: Styles.padding10,
+                    height: Styles.padding20,
                   ),
                   Wrap(
                     children: [
@@ -37,14 +36,14 @@ Widget mobileLayout(ThemeData themeData, MediaQueryData mediaQuery,
                         style: TextStyle(
                           fontFamily: Constants.fontFamilyKaushanScript,
                           color: Styles.mainHeadingColor,
-                          fontSize: mediaQuery.size.width / 17,
+                          fontSize: mediaQuery.size.width / 15,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ],
                   ),
                   SizedBox(
-                    height: Styles.padding10,
+                    height: Styles.padding20,
                   ),
                   Wrap(
                     children: [
@@ -54,22 +53,22 @@ Widget mobileLayout(ThemeData themeData, MediaQueryData mediaQuery,
                         style: TextStyle(
                           fontFamily: Constants.fontFamilyKaushanScript,
                           color: Styles.white,
-                          fontSize: mediaQuery.size.width / 20,
+                          fontSize: mediaQuery.size.width / 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ],
                   ),
                   SizedBox(
-                    height: Styles.padding5,
+                    height: Styles.padding30,
                   ),
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Flexible(
-                        child: TransparentAvatar.getTransparentAvatar(),
+                        child: getTransparentAvatar(),
                       ),
-                      MenuItemAnimation(
+                      DashboardMenuItem(
                         scrollController: scrollController,
                         screenName: Constants.experience,
                         imagePath: Constants.experienceImagePath,
@@ -79,13 +78,16 @@ Widget mobileLayout(ThemeData themeData, MediaQueryData mediaQuery,
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      MenuItemAnimation(
-                        scrollController: scrollController,
-                        screenName: Constants.profile,
-                        imagePath: Constants.profileImagePath,
+                      Transform.translate(
+                        offset: Offset(0, -30),
+                        child: DashboardMenuItem(
+                          scrollController: scrollController,
+                          screenName: Constants.projects,
+                          imagePath: Constants.projectsImagePath,
+                        ),
                       ),
                       Flexible(
-                        child: TransparentAvatar.getTransparentAvatar(),
+                        child: getTransparentAvatar(),
                       ),
                     ],
                   ),
@@ -93,54 +95,61 @@ Widget mobileLayout(ThemeData themeData, MediaQueryData mediaQuery,
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Flexible(
-                        child: TransparentAvatar.getTransparentAvatar(),
+                        child: getTransparentAvatar(),
                       ),
-                      MenuItemAnimation(
-                        scrollController: scrollController,
-                        screenName: Constants.projects,
-                        imagePath: Constants.projectsImagePath,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      MenuItemAnimation(
-                        scrollController: scrollController,
-                        screenName: Constants.education,
-                        imagePath: Constants.educationImagePath,
-                        animateFromTop: false,
-                      ),
-                      Flexible(
-                        child: TransparentAvatar.getTransparentAvatar(),
+                      Transform.translate(
+                        offset: Offset(0, -60),
+                        child: DashboardMenuItem(
+                          scrollController: scrollController,
+                          screenName: Constants.profile,
+                          imagePath: Constants.profileImagePath,
+                        ),
                       ),
                     ],
                   ),
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Flexible(
-                        child: TransparentAvatar.getTransparentAvatar(),
+                      Transform.translate(
+                        offset: Offset(0, -90),
+                        child: DashboardMenuItem(
+                          scrollController: scrollController,
+                          screenName: Constants.education,
+                          imagePath: Constants.educationImagePath,
+                        ),
                       ),
-                      MenuItemAnimation(
-                        scrollController: scrollController,
-                        screenName: Constants.skills,
-                        imagePath: Constants.skillsImagesPath,
-                        animateFromTop: false,
+                      Flexible(
+                        child: getTransparentAvatar(),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Flexible(
+                        child: getTransparentAvatar(),
+                      ),
+                      Transform.translate(
+                        offset: Offset(0, -120),
+                        child: DashboardMenuItem(
+                          scrollController: scrollController,
+                          screenName: Constants.skills,
+                          imagePath: Constants.skillsImagesPath,
+                        ),
                       ),
                     ],
                   ),
                 ],
               ),
             ),
-            ExperienceScreen(),
-            ProjectsScreen(),
-            EducationScreen(),
-            SkillsScreen(),
-            ProfileDetailsScreen(),
+            ExperienceScreenMobile(),
+            ProjectsScreenMobile(),
+            EducationScreenMobile(),
+            SkillsScreenMobile(),
+            ProfileDetailsScreenMobile(),
             IconButton(
               icon: Icon(FontAwesomeIcons.chevronUp),
-              iconSize: Styles.padding30,
+              iconSize: Styles.padding20,
               onPressed: () {
                 scrollController.animateTo(
                   0,
@@ -153,5 +162,12 @@ Widget mobileLayout(ThemeData themeData, MediaQueryData mediaQuery,
         ),
       ),
     ),
+  );
+}
+
+Widget getTransparentAvatar() {
+  return CircleAvatar(
+    radius: Styles.padding50,
+    backgroundColor: Colors.transparent,
   );
 }

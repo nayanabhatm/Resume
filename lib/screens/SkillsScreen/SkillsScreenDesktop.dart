@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:resume_page/utils/constants.dart';
 import 'package:resume_page/utils/styles.dart';
 
-class SkillsScreen extends StatelessWidget {
-  const SkillsScreen({Key key}) : super(key: key);
+class SkillsScreenDesktop extends StatelessWidget {
+  const SkillsScreenDesktop({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +22,7 @@ class SkillsScreen extends StatelessWidget {
             ),
           ),
           DataTable(
+            horizontalMargin: 0.0,
             columns: [
               DataColumn(
                 label: Text(

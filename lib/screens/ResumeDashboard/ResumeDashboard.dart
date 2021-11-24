@@ -16,7 +16,7 @@ class _ResumeDashboardState extends State<ResumeDashboard>
     final ThemeData _themeData = Theme.of(context);
     final MediaQueryData _mediaQuery = MediaQuery.of(context);
 
-    if (_mediaQuery.size.width > 1024) {
+    if (_mediaQuery.size.width > 1000) {
       return desktopLayout(_themeData, _mediaQuery, _scrollController);
     }
 

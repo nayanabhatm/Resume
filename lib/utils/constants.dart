@@ -34,8 +34,7 @@ class Constants {
 
   static const String educationDetails = 'EDUCATION DETAILS';
   static const String collegeName = 'College Name';
-  static const String sit =
-      'Siddaganga Institue Of Technology, Tumkur, Karnataka, India';
+  static const String sit = 'Siddaganga Institue Of Technology, Tumkur, India';
   static const String branch = 'Branch';
   static const String cse = 'Computer Science and Engineering';
   static const String batch = 'Batch';
